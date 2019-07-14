@@ -8,7 +8,8 @@ const HTML_FILE = path.join(DIST_DIR, 'index.html');
 
 const mockResponse = {
   foo: 'bar',
-  bar: 'foo'
+  bar: 'foo',
+  baz: 'baz',
 };
 app.use(express.static(DIST_DIR));
 app.get('/api', (req, res) => {
