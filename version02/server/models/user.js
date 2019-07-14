@@ -5,7 +5,8 @@ const { Schema } = mongoose;
 
 const User = new Schema({
   /*
-    Define your user information fields for the schema here, DO NOT MAKE 'username' and 'password' fields,
+    Define your user information fields for the schema here,
+    DO NOT MAKE 'username' and 'password' fields,
     since passport will set those for you
   */
   email: {

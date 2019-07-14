@@ -1,8 +1,8 @@
-const mongooseUrlType = require('mongoose-type-url');
+require('mongoose-type-url');
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-const { SchemaTypes: { Url } } = mongooseUrlType;
+const { Url } = mongoose.SchemaTypes;
 
 const PictureSchema = new Schema({
   picUrl: {

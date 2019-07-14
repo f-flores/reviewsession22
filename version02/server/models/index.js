@@ -1,9 +1,11 @@
-const User = require('./user.js');
-const Note = require('./note.js');
-const Pic = require('./pic.js');
+const User = require('./user');
+const Note = require('./note');
+const Pic = require('./pic');
+const Test = require('./test');
 
 module.exports = {
   User,
   Note,
   Pic,
+  Test,
 };
