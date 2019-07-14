@@ -2,7 +2,7 @@ import React from 'react';
 
 const Widget = () => (
   <div>
-    <h2>My React App</h2>
+    <h2>Welcome to React</h2>
   </div>
 );
 

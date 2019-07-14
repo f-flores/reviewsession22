@@ -11,13 +11,18 @@ const mockResponse = {
   bar: 'foo',
   baz: 'baz',
 };
-app.use(express.static(DIST_DIR));
-app.get('/api', (req, res) => {
-  res.send(mockResponse);
-});
-app.get('/', (req, res) => {
-  res.sendFile(HTML_FILE);
-});
-app.listen(PORT, () => {
-  console.log(`App listening on port: ${PORT}`);
-});
+
+function createServer() {
+  app.use(express.static(DIST_DIR));
+  app.get('/api', (req, res) => {
+    res.send(mockResponse);
+  });
+  app.get('/', (req, res) => {
+    res.sendFile(HTML_FILE);
+  });
+  app.listen(PORT, () => {
+    console.log(`App listening on port: ${PORT}`);
+  });
+}
+
+createServer();
