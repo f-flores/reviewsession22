@@ -9,9 +9,10 @@
   "author": "Fabian Flores <ffflores1@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
+    "start": "if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
     "start:prod": "node ./server/index.js",
-    "start:dev": "concurrently \"nodemon ./server/index.js --ignore 'src/*'\" \"./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --mode development\"",
+    "start:dev": "concurrently \"nodemon ./server/index.js --ignore 'src/*'\" \"yarn start-react\"",
+    "start-react": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --mode development",
     "build": "./node_modules/.bin/webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
