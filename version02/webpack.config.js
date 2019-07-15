@@ -26,5 +26,6 @@ module.exports = {
     contentBase: './dist',
     port: 3000,
     hot: true,
+    proxy: { '/api/**': { target: 'http://localhost:3001', secure: false } },
   },
 };

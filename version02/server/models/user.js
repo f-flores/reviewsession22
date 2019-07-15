@@ -9,12 +9,6 @@ const User = new Schema({
     DO NOT MAKE 'username' and 'password' fields,
     since passport will set those for you
   */
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true,
-  },
   pics: [
     {
       type: Schema.Types.ObjectId,

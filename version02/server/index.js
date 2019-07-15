@@ -1,11 +1,8 @@
-/* eslint-disable global-require */
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const morgan = require('morgan');
-const passport = require('passport');
-// eslint-disable-next-line no-unused-expressions
-require('passport-local').Strategy;
+const passport = require('./config/passport');
 const User = require('./models/user');
 const routes = require('./routes');
 const db = require('./config/dbConnect');
@@ -31,7 +28,6 @@ const setupPassport = () => {
   app.use(passport.session());
 
   passport.use(User.createStrategy());
-  require('./config/passport');
 };
 
 // connects to data models
@@ -65,8 +61,8 @@ const requireRoutes = () => app.use(routes);
 
 const createServer = () => {
   middleWare();
-  requireRoutes();
   performConnections();
+  requireRoutes();
   app.get('/', (req, res) => {
     res.sendFile(HTML_FILE);
   });

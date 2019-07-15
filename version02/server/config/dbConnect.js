@@ -8,6 +8,7 @@ async function connect() {
     useFindAndModify: false,
     useCreateIndex: true,
   };
+  // localhost/mongooseDatabase
   await mongoose.connect(MONGODB_URI || MONGODB_LOCATION, options);
   console.log('Connected to MongoDB');
 }

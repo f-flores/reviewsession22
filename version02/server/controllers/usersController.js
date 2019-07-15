@@ -26,7 +26,7 @@ module.exports = {
   },
   update(req, res) {
     User.findOneAndUpdate({
-      _id: req.params.id
+      _id: req.params.id,
     }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -41,14 +41,16 @@ module.exports = {
   },
   register(req, res) {
     /* To create a new user */
+    const { email, password } = req.body;
     User
-      .register(new User({ username: req.body.username }), req.body.password, function (err) {
+      .register(new User({ email }), password, (err) => {
         if (err) {
           console.log('error while user register!', err);
           return res.status(422).json(err);
         }
         console.log('user registered!');
         res.json(true);
+        return null;
       });
-  }
+  },
 };

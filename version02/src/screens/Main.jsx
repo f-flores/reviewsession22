@@ -1,47 +1,42 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import API from '../utils/API';
 
 class Main extends Component {
-  state = {
-    isLoggedIn: false,
-    email: '',
-  }
-
-  // Check login status on load
-  componentDidMount() {
-    this.loginCheck();
-  }
-
-  // Check login status
-  loginCheck = () => {
-    API
-      .loginCheck()
-      .then(res => this.setState({
-        isLoggedIn: res.data.isLoggedIn, email: res.data.email,
-      }))
-      .catch((err) => {
-        console.log(err);
-        this.setState({ isLoggedIn: false });
-      });
+  constructor(props) {
+    super(props);
+    this.state = {
+      example: '',
+    };
+    this.source = {};
   }
 
   render() {
-    const { isLoggedIn, email } = this.state;
-    // If user isn't logged in, don't let them see this page
+    const { isLoggedIn, email } = this.props;
+
     if (!isLoggedIn) {
       return <Redirect to="/login" />;
     }
 
     return (
-      <h1>
-        You Made it to the main page
-        {' '}
-        {email}
-!
-      </h1>
+      <div className="container">
+        <div className="justify-content-center">
+          <h2 className="text-center">
+            Main page
+            {' '}
+            {email}
+          </h2>
+        </div>
+      </div>
     );
   }
 }
+
+Main.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  email: PropTypes.string.isRequired,
+};
 
 export default Main;

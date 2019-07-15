@@ -2,6 +2,8 @@
   "name": "samplereact",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
+  "proxy": "http://localhost:3001",
   "repository": {
     "link": "git@github.com:f-flores/reviewsession22.git",
     "type": "git"
@@ -31,6 +33,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1"
