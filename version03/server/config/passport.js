@@ -22,12 +22,10 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser((user, done) => {
-  console.log('Inside serializeUser callback. User id is save to the session file store here');
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  console.log('Inside deserializeUser callback');
   User.findById({ _id: id }).then((user) => {
     done(null, user);
   }).catch(err => done(err, null));

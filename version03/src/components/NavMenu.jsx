@@ -12,10 +12,10 @@ const StyledNavLink = styled(Nav.Item)`
     background-color: lightgray;
     padding: 18px 10px 15px 10px;
     margin: -17px 0px -16px 10px;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: black;
   }
   &.welcome {
-    color: green;
+    color: lightgreen;
     font-weight: bold;
     background-color: transparent;
   }

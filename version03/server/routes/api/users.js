@@ -7,7 +7,6 @@ router
   .route('/login')
   .post(passport.authenticate('local'), (req, res) => {
     // Log in and send back user information
-    console.log(req.user);
     res.json({ isLoggedIn: true, email: req.user.email });
   })
   .get((req, res) => {
