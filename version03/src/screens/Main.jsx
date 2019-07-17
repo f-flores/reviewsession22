@@ -9,22 +9,22 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import API from '../utils/API';
 import CloudinaryUploadWidget from '../components/CloudinaryUploadWidget';
+import ImagesLayout from '../components/ImagesLayout';
 
 const Main = (props) => {
   const { isLoggedIn, email } = props;
   const [description, setDescription] = useState('');
-  const [isValid, setValid] = useState(true);
+  const [isValid, setIsValid] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [arrMediaInfo, setMediaInfo] = useState([]);
   let cloudinaryUrl = '';
   let source = {};
 
-  // get current reserved dates and disable them
+  // get user's stored pictures
   const getMediaInfo = useCallback(() => {
     API
-      .getMediaInfo(email, source)
-      .then((res) => {
-        setMediaInfo(res.data);
-      })
+      .getMediaInfo(source)
+      .then(res => setMediaInfo(res.data.pics))
       .catch((err) => {
         console.log(`Something went wrong in data retrieval ${err.message}`);
       });
@@ -32,15 +32,12 @@ const Main = (props) => {
 
   useEffect(() => {
     source = axios.CancelToken.source();
-  }, []); // like ComponentDidMount()
-
-  useEffect(() => {
     getMediaInfo();
 
     return function cleanup() { // like ComponentWillUnmount
       API.cancelRequest(source);
     };
-  }, [getMediaInfo, arrMediaInfo]); // executes everytime arrMediaInfo changes 'state'
+  }, []); // like ComponentDidMount()
 
   const handleOnChange = (event) => {
     event.preventDefault();
@@ -51,20 +48,20 @@ const Main = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!(cloudinaryUrl && description)) {
-      setValid(false);
+      setIsValid(false);
       return;
     }
     API
       .postInfo({
         picUrl: cloudinaryUrl,
-        body: description,
+        note: description,
       }, source)
-      .then((res) => {
-        // setMediaInfo
-        // get pictures render images and notes
-        setMediaInfo(res.data);
-        setValid(true);
-        console.log('submitted');
+      .then(() => {
+        getMediaInfo();
+        setIsValid(true);
+        setDescription('');
+        setIsSubmitted(true);
+        cloudinaryUrl = '';
       })
       .catch(err => console.log(err));
   };
@@ -79,13 +76,13 @@ const Main = (props) => {
 
   return (
     <Container>
-      <Row className="justify-content-center mt-5">
+      <Row className="justify-content-center mt-3">
         <Col xs={12} md={8}>
-          <h2 className="text-center">
+          <h3 className="text-center">
             Main page
             {' '}
             {email}
-          </h2>
+          </h3>
           <Form>
             <h3>Upload Picture</h3>
             <Form.Group>
@@ -103,6 +100,7 @@ const Main = (props) => {
             <Form.Group>
               <CloudinaryUploadWidget
                 cloudinaryInfo={setCloudinaryInfo}
+                isSubmitted={isSubmitted}
               />
             </Form.Group>
             <Button
@@ -110,7 +108,7 @@ const Main = (props) => {
               className="btn btn-success"
               onClick={handleSubmit}
             >
-              Submit
+              Add to Album
             </Button>
           </Form>
         </Col>
@@ -125,6 +123,9 @@ const Main = (props) => {
             )
             : null
         }
+      </Row>
+      <Row>
+        <ImagesLayout images={arrMediaInfo} />
       </Row>
     </Container>
   );

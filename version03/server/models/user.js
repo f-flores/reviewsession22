@@ -12,7 +12,7 @@ const User = new Schema({
   pics: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Pic',
+      ref: 'Picture',
     },
   ],
 });

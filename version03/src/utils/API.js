@@ -21,10 +21,10 @@ export default {
     return axios.post('/api/users/register', userInfo, { cancelToken: source.token });
   },
   postInfo(mediaInfo, source) {
-    return axios.post('/api/users/imginfo', mediaInfo, { cancelToken: source.token });
+    return axios.post('/api/imginfo', mediaInfo, { cancelToken: source.token });
   },
-  getMediaInfo(email, source) {
-    return axios.get('/api/users/imginfo', { email }, { cancelToken: source.token });
+  getMediaInfo(source) {
+    return axios.get('/api/imginfo', { cancelToken: source.token });
   },
   // cancel request
   cancelRequest(source) {

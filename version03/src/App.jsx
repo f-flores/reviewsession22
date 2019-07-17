@@ -64,7 +64,6 @@ class App extends Component {
     <Route
       {...rest}
       render={(props) => {
-        console.log(`in PrivateRoute: ${JSON.stringify(this.state)}`);
         const { isLoggedIn, email } = this.state;
         if (isLoggedIn) {
           return (

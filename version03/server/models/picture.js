@@ -9,12 +9,10 @@ const PictureSchema = new Schema({
     type: Url,
     default: 'https://via.placeholder.com/200x200',
   },
-  notes: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Note',
-    },
-  ],
+  note: {
+    type: String,
+    default: '',
+  },
 });
 
 const Picture = mongoose.model('Picture', PictureSchema);

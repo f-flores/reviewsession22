@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // import document from 'global/document';
 import window from 'global/window';
 import { Image, Transformation } from 'cloudinary-react';
-import API from '../utils/API';
 
 const MAX_IMAGE_SIZE = 6144000; // Maximum Image Size, around 6MB
 
@@ -18,6 +17,7 @@ const CloudinaryUploadWidget = (props) => {
   const [imageUploaded, setImageUploaded] = useState(false);
   const [imgUrl, setImgUrl] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const { isSubmitted } = props;
   let widgetref = null;
 
   const cloudPublicId = imgUrl === '' ? '' : imgUrl.slice(imgUrl.lastIndexOf('/') + 1);
@@ -71,7 +71,7 @@ const CloudinaryUploadWidget = (props) => {
     }, false);
   };
 
-  if (imageUploaded) {
+  if (imageUploaded && !isSubmitted) {
     return (
       <div>
         <SuccessText>Image Successfully Uploaded</SuccessText>
@@ -114,6 +114,7 @@ const CloudinaryUploadWidget = (props) => {
 
 CloudinaryUploadWidget.propTypes = {
   cloudinaryInfo: PropTypes.func.isRequired,
+  isSubmitted: PropTypes.bool.isRequired,
 };
 
 export default CloudinaryUploadWidget;
