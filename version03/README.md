@@ -6,7 +6,7 @@ Build upon version02.
 
 Leverages passport library to implement authentication. Basic signup/login/logout functionality.
 
-Setup Cloudinary.
+### Setup Cloudinary
 
 Signup up for cloudinary account at https://cloudinary.com
 
@@ -32,7 +32,9 @@ Also in, './dist/index.html', add the following line of code under `<div id="roo
   <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 ```
 
-Installation instructions:
+Also note that this version's `webpack.config.js` changed in order to include environment variables.
+
+### Installation instructions:
 
 * Clone repository: `git clone git@github.com:f-flores/reviewsession22.git`
 
