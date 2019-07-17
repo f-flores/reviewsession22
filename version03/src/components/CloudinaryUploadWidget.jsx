@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import document from 'global/document';
 import window from 'global/window';
 import { Image, Transformation } from 'cloudinary-react';
 
@@ -100,7 +99,7 @@ const CloudinaryUploadWidget = (props) => {
       Upload Image
       </button>
       {
-        errorMsg !== ''
+        errorMsg
         && (
           <p className="bg-danger text-white font-weight-bold">
             {errorMsg}
