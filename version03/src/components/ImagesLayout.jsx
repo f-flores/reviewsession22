@@ -13,7 +13,8 @@ const ImagesLayout = ({ images }) => {
           {
             images.map(image => (
               <Col
-                xs={4}
+                xs={12}
+                md={4}
                 key={image._id}
               >
                 <figure>

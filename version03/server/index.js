@@ -37,7 +37,7 @@ async function performConnections() {
   try {
     await db.connect();
   } catch (error) {
-    serverError(error, 'Closing server');
+    serverError(error, 'Closing mongodb server');
   }
 
   // connect to cloudinary
@@ -56,7 +56,7 @@ const middleWare = () => {
   setupPassport();
 };
 
-// Add routes, both API and view
+// Add API routes
 const requireRoutes = () => app.use(routes);
 
 const createServer = () => {

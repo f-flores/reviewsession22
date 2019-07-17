@@ -26,7 +26,7 @@ const Main = (props) => {
       .getMediaInfo(source)
       .then(res => setMediaInfo(res.data.pics))
       .catch((err) => {
-        console.log(`Something went wrong in data retrieval ${err.message}`);
+        console.log(`Something went wrong in data retrieval ${JSON.stringify(err)}`);
       });
   }, [arrMediaInfo]);
 
@@ -128,7 +128,7 @@ const Main = (props) => {
             : null
         }
       </Row>
-      <Row>
+      <Row className="justify-content-center">
         <ImagesLayout images={arrMediaInfo} />
       </Row>
     </Container>
