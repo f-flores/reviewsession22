@@ -39,6 +39,13 @@ const Main = (props) => {
     };
   }, []); // like ComponentDidMount()
 
+  const resetValues = () => {
+    setIsValid(true);
+    setDescription('');
+    setIsSubmitted(true);
+    cloudinaryUrl = '';
+  };
+
   const handleOnChange = (event) => {
     event.preventDefault();
     const { value } = event.target;
@@ -58,10 +65,7 @@ const Main = (props) => {
       }, source)
       .then(() => {
         getMediaInfo();
-        setIsValid(true);
-        setDescription('');
-        setIsSubmitted(true);
-        cloudinaryUrl = '';
+        resetValues();
       })
       .catch(err => console.log(err));
   };
