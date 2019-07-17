@@ -22,7 +22,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.EnvironmentPlugin({
-      APP_URL: JSON.stringify(process.env.APP_URL),
       REACT_APP_CLOUDINARY_NAME: JSON.stringify(process.env.REACT_APP_CLOUDINARY_NAME),
       REACT_APP_CLOUDINARY_API_KEY: JSON.stringify(process.env.REACT_APP_CLOUDINARY_API_KEY),
       REACT_APP_CLOUDINARY_API_SECRET: JSON.stringify(process.env.REACT_APP_CLOUDINARY_API_SECRET),
