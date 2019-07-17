@@ -66,7 +66,6 @@ const CloudinaryUploadWidget = (props) => {
       });
     }
     widgetref.addEventListener('click', () => {
-      console.log('inside widgetref listener');
       cloudinaryWidget.open();
     }, false);
   };

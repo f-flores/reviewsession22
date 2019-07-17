@@ -3,7 +3,6 @@ import axios from 'axios';
 export default {
   //  loginCreds = {email: "testuser@example.com", "password": "abc123"}
   loginUser(loginCreds, source) {
-    console.log(`in loginFunction: loginCreds: ${JSON.stringify(loginCreds)}`);
     return axios.post('/api/users/login', loginCreds, { cancelToken: source.token });
   },
   //  Path to check if user is logged in

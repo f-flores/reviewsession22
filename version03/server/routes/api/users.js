@@ -11,7 +11,6 @@ router
   })
   .get((req, res) => {
     // Check to see if user is logged in
-    console.log(req.user);
     if (req.user) {
       // If logged in, send back this flag and the username itself
       // NOTE: you can send back whatever you want here
@@ -28,7 +27,6 @@ router
   .get((req, res) => {
     // Log user out
     req.logout();
-    console.log(req.user);
     res.json(false);
   });
 

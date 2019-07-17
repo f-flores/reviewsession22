@@ -53,7 +53,6 @@ class Login extends Component {
     API
       .loginUser({ email, password }, this.source)
       .then((res) => {
-        console.log(res.data);
         this.setState({ isLoggedIn: res.data.isLoggedIn });
         // ------------------------------------------
         // loginResult is callback function to parent

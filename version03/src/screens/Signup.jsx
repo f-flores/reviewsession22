@@ -42,7 +42,6 @@ class Signup extends Component {
     API
       .register({ email, password }, this.source)
       .then((res) => {
-        console.log(res.data);
         this.setState({
           success: res.data,
           errorMessage: '',
