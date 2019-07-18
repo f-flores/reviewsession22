@@ -58,14 +58,6 @@ From there, select the `Upload` tab and scroll down to the `Upload Presets` sect
 the "enable unsigned upload" option. This creates a preset name which should be copied in the
 REACT_APP_UPLOAD_PRESET variable above.
 
-Also in, './dist/index.html', add the following line of code under `<div id="root></div>`:
-
-```
-  <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-```
-
-Also note that this version's `webpack.config.js` changed in order to include environment variables.
-
 ### Installation instructions:
 
 * Clone repository: `git clone git@github.com:f-flores/reviewsession22.git`
